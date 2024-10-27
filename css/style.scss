@@ -57,6 +57,12 @@
     font-style: normal;
 }
 
+.filesSend{
+  height: 50px !important;
+  width: 50px !important;
+  color: rgb(24,149,1);
+}
+
 body {
   min-height: 100vh;
   width: 100%;
@@ -1074,7 +1080,7 @@ body {
             justify-content: center;
             flex-direction: row;
             align-items: center;
-            gap: 10px;
+            gap: 120px;
 
             div {
                 text-align: start;

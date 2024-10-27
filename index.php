@@ -181,39 +181,54 @@
                 <span class="firstText mt-4">¿Quieres convertirte en un experto en el Juicio de Amparo? Nuestro curso en Práctica Forense te ofrece la oportunidad de adquirir conocimientos y habilidades prácticas esenciales para litigar en esta área crucial del derecho. Aprenderás a entender la estructura y lógica del Juicio de Amparo, elaborar demandas, contestaciones y recursos, manejar pruebas y desahogar cada etapa del juicio, y argumentar con eficacia en las audiencias.<br><br>Con un enfoque práctico y una metodología innovadora, te preparamos para enfrentar y ganar casos de amparo con confianza y seguridad. No dejes pasar esta oportunidad de fortalecer tu carrera jurídica.<br><br>¡Inscríbete ahora y lleva tu práctica profesional al siguiente nivel!</span><br><br>
                 <!-- Boton de contáctanos -->
                 <div class="mt-4 row container-fluid btnCotizacionContainer" id="cbutton3">
-                    <button onClick="ssss()" class="btnCotizacion col-sm-6 mb-2 fw-bold fs-5" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="boton3" >¡ Mas información !</button>
+                    <button class="btnCotizacion col-sm-6 mb-2 fw-bold fs-5" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="boton3" >¡ Mas información !</button>
                 </div>
             </div>
         </section>
 
         <!-- Modal -->
-        <form action="./sendEmail.php" method="post" id="form">
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                    <div class="modal-header modalTitleCustom">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Realiza tu registro y te enviaremos la información completa de los cursos por email</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header modalTitleCustom">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Realiza tu registro y te enviaremos la información completa de los cursos por email</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
 
-                            <label for="telefono">Teléfono:</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" required>
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
 
-                            <label for="email">Correo Electrónico:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </form>
+                    <div id="progress-bar" class="text-center" style="display: none;">
+                        <p class="fw-bold">Enviando información ...</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <input type="submit" class="btn btn-primary"></input>
-                    </div>
+                    <div id="messageSuccess" style="display: none;">
+                        <div class="text-center">
+                            <ion-icon class="filesSend" name="checkmark-circle-outline"></ion-icon>
+                        </div>
+                        <div class="text-center">
+                            <p class="fw-bold">Información enviada.<br>Puedes cerrar esta ventana.</p>
+                        </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button id="btnCancel" type="button" class="btn btn-secondary" onclick="closeForm()" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="btnSend" type="button" class="btn btn-primary" onclick="sendForm()">Enviar</button>
+                </div>
+                </div>
             </div>
-        </form>
-
+        </div>
+       
+           
     </main>
     
     <?php require "footer.php"; ?>
@@ -223,10 +238,55 @@
 </html>
 
 <script>
+
+    function closeForm(){
+        $('#progress-bar').hide()
+        $('#btnSend').show()
+        $('#btnCancel').text('Cancelar')
+        $('#form').show()
+        $('#messageSuccess').hide()
+    }
+
+    function sendForm(buttonId){
+        const name = $('#name').val()
+        const phone = $('#phone').val()
+        const email = $('#email').val()
+        const course = $('#course').val()
+
+        if (name === "" || phone === "" || email === "") {
+            alert("Por favor, completa todos los campos.")
+            return
+        }
+        $('#form').hide()
+        $('#btnSend').hide()
+        $('#progress-bar').show()
+        
+        $.ajax({
+            url: './sendEmail.php',
+            type: 'POST',
+            data: {
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    course:course
+            },
+            success: function(response) {
+                
+                $('#progress-bar').hide()
+                $('#btnSend').hide()
+                $('#messageSuccess').show()
+                $('#btnCancel').text('Cerrar');
+            },
+            error: function() {
+                alert('Hubo un error en el envío')
+            }
+        });
+    }
+
     $(document).ready(function(){
         $('.fade-in').animate({ opacity: 1 }, 2000);
         $('.slide-in').animate({ left: '0%' }, 2000);
-
+        
         var startNegocios = 0;
         var endNegocios = 20;
         var startHogares = 0;
@@ -268,7 +328,7 @@
         var button = event.relatedTarget;
         var buttonId = button.getAttribute('data-id');
 
-        var inputHidden = $('<input type="hidden" name="curso" value="' + buttonId + '">');
+        var inputHidden = $('<input id="course" type="hidden" name="curso" value="' + buttonId + '">');
         $('#form').append(inputHidden);
 
         $.ajax({
