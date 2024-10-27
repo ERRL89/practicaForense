@@ -59,10 +59,7 @@
                 
                 <div class="containerRedes">
                     <a href="https://www.facebook.com/practicaForenseDerecho/" target="_blank"><img src="./images/redes/Caralibro.svg" alt="Facebook Corporativo Salcedo"></a>
-                    <a href="https://www.facebook.com/practicaForenseDerecho/"><img src="./images/redes/Linkedin.svg" alt="Linkedin Corporativo Salcedo"></a>
-                    <a href="https://www.facebook.com/practicaForenseDerecho/"><img src="./images/redes/Instagram.svg" alt="Instagram Corporativo Salcedo"></a>
-                    <a href="https://www.facebook.com/practicaForenseDerecho/"><img src="./images/redes/Tik tok.svg" alt="Tik Tok Corporativo Salcedo"></a>
-                    <a href="https://www.facebook.com/practicaForenseDerecho/"><img src="./images/redes/X.svg" alt="Twitter X Corporativo Salcedo"></a>
+                    <a href="https://www.instagram.com/corporativojuridicosalcedo/" target="_blank"><img src="./images/redes/Instagram.svg" alt="Instagram Corporativo Salcedo"></a>
                 </div>
             </div>
 

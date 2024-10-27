@@ -22,8 +22,8 @@
 
     #DATOS PARA PHPMAIL
     $mailHost = 'smtp.hostinger.com';
-    $mailUser = 'cotizaciones@despachocontablesalas.com';
+    $mailUser = 'info@practicaforenseenderecho.com';
     $mailPass = 'Erxl5063701489*';
-    $mailSender = array('email' => 'cotizaciones@despachocontablesalas.com', 'name' => 'Despacho Contable Salas Salazar & Asociados');
+    $mailSender = array('email' => 'info@practicaforenseenderecho.com', 'name' => 'Información de Cursos - Practica Forense en Derecho');
     #
 ?>
