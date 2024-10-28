@@ -1,10 +1,10 @@
 <?php
 
     include_once('./config/config.php');
-    include_once($root.'config/dbConf.php');
+    include_once('./config/dbConf.php');
     $db=conexionPdo();
    
-    $course = $_POST["curso"];
+    $course = $_POST["course"];
     
     if($course=="boton1"){
         $course=1;
