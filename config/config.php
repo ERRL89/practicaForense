@@ -1,11 +1,4 @@
 <?php
-	$folderBase = 'practicaForense/';
-    $theme = 'acil';
-	$root = $_SERVER['DOCUMENT_ROOT'].'/'.$folderBase;
-	
-	// INFORMACIÓN PARA TEST //
-    #BASE DE DATOS
-
     $produccion="no";
 
     if($produccion=="si"){

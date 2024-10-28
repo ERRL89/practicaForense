@@ -262,7 +262,7 @@
         $('#progress-bar').show()
         
         $.ajax({
-            url: './sendEmail.php',
+            url: 'sendEmail.php',
             type: 'POST',
             data: {
                     name: name,
@@ -328,7 +328,7 @@
         var button = event.relatedTarget;
         var buttonId = button.getAttribute('data-id');
 
-        var inputHidden = $('<input id="course" type="hidden" name="curso" value="' + buttonId + '">');
+        var inputHidden = $('<input id="course" type="hidden" name="course" value="' + buttonId + '">');
         $('#form').append(inputHidden);
 
         $.ajax({
@@ -336,7 +336,7 @@
                 type: 'POST',
                 data: 
                 {
-                    curso:buttonId
+                    course:buttonId
                 },
                 success: function(result)
                 {
